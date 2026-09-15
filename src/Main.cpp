@@ -542,12 +542,12 @@ static void displaySettings(reshade::api::effect_runtime* runtime)
 					{
 						if(cameraData->cameraEnabled)
 						{
-							if(ImGui::Button("Start render"))
+							if(ImGui::Button("Start render##top"))
 							{
 								g_depthOfFieldController.startRender(runtime);
 							}
 							ImGui::SameLine();
-							if(ImGui::Button("Cancel"))
+							if(ImGui::Button("Cancel##top"))
 							{
 								g_depthOfFieldController.endSession(runtime);
 							}
@@ -858,6 +858,15 @@ static void displaySettings(reshade::api::effect_runtime* runtime)
 							if(changed)
 							{
 								g_depthOfFieldController.setShowProgressBarAsOverlay(showProgressBarAsOverlay);
+							}
+							if(ImGui::Button("Start render##bottom"))
+							{
+								g_depthOfFieldController.startRender(runtime);
+							}
+							ImGui::SameLine();
+							if(ImGui::Button("Cancel##bottom"))
+							{
+								g_depthOfFieldController.endSession(runtime);
 							}
 #if _DEBUG
 							if(ImGui::CollapsingHeader("Debug"))
